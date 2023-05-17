@@ -12,7 +12,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 public class NewsArticle {
@@ -25,6 +24,11 @@ public class NewsArticle {
     @ManyToOne
     @JoinColumn(name = "news_source_id",nullable = true)
     private NewsSource source;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = true)
+    private User user;
 
     private String author;
 

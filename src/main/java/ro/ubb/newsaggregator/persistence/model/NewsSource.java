@@ -1,5 +1,6 @@
 package ro.ubb.newsaggregator.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,7 +11,6 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-@Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 public class NewsSource {
@@ -31,6 +31,6 @@ public class NewsSource {
 
     private String country;
 
-    @OneToMany(mappedBy = "source")
+    @OneToMany(mappedBy = "source",cascade = {CascadeType.ALL})
     private Set<NewsArticle> newsArticleSet;
 }
